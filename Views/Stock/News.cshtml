@@ -1,0 +1,34 @@
+﻿@model StockNews
+@{
+  ViewData["Title"] = "Stock News";
+}
+
+<div class="container p-4">
+  <div class="align-items-center d-flex" style="justify-content: space-between">
+    <h1>Stocks</h1>
+    <h3>News</h3>
+  </div>
+  <h3>Date: @System.DateTime.Now.ToShortDateString()</h3>
+
+  <div class="d-grid p-2" style="justify-content: center;">
+
+    @foreach (var story in Model.data)
+    {
+      <div class="card border-primary mb-3">
+        <div class="card-header"><a href=@story.url>@story.source</a></div>
+        <div class="card-body">
+          <h4 class="card-title">@story.title</h4>
+          <p class="card-text">@story.description</p>
+        </div>
+        <img class="card-img p-1" style="height: 400px; object-fit: cover" src=@story.image_url />
+        <div class="card-body">
+          <p class="card-text">@story.keywords</p>
+          <p class="card-text">@story.published_at</p>
+        </div>
+      </div>
+    }
+
+  </div>
+
+</div>
+

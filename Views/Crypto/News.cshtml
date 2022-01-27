@@ -1,0 +1,33 @@
+﻿@model CryptoNews
+@{
+  ViewData["Title"] = "Crypto News";
+}
+
+<div class="container p-4">
+  <div class="align-items-center d-flex" style="justify-content: space-between">
+    <h1>Crytpo</h1>
+    <h3>News | Reddit Feed</h3>
+  </div>
+  <h3>Date: @System.DateTime.Now.ToShortDateString()</h3>
+
+  <div class="d-grid p-2" style="justify-content: center;">
+
+    @foreach (var post in Model.collection)
+    {
+      <div class="card border-primary mb-3">
+        <div class="card-header">
+          <a href=@post.data.url_overridden_by_dest><h3>@post.data.title</h3></a>
+          <h3>Upvotes: @post.data.ups</h3>
+        </div>
+        <img src=@post.data.thumbnail alt="" />
+        <div class="card-body">
+          <a href=https://www.reddit.com/@post.data.permalink><h4>See Post</h4></a>
+          <h5 class="card-text">Tags: @post.data.link_flair_text</h5>
+          <h5 class="card-text">Posted: </h5>
+        </div>
+      </div>
+    }
+
+  </div>
+
+</div>

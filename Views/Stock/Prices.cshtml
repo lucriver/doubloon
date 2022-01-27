@@ -1,0 +1,42 @@
+﻿@model StockPrices
+@{
+  ViewData["Title"] = "Crypto Prices";
+}
+
+<div class="container p-4">
+  <div class="align-items-center d-flex" style="justify-content: space-between">
+    <h1>Stocks</h1>
+    <h3>Prices</h3>
+  </div>
+  <h3>Date: @System.DateTime.Now.ToShortDateString()</h3>
+
+  <div class="d-flex" style="justify-content: center; flex-direction: row; order: 1; flex-wrap: wrap; flex: 1 0 100%">
+    @foreach (var stock in Model.values)
+    {
+      <div class="card border-primary m-2" style="width: 250px">
+        <div class="card-header">
+          <h1>@stock.T</h1>
+        </div>
+        <div class="card-body">
+          <div class="card-text d-flex justify-content-between">
+            <h4>Open: </h4>
+            <h4>$@stock.o</h4>
+          </div>
+          <div class="card-text d-flex justify-content-between">
+            <h4>High: </h4>
+            <h4>$@stock.h</h4>
+          </div>
+          <div class="card-text d-flex justify-content-between">
+            <h4>Low: </h4>
+            <h4>$@stock.l</h4>
+          </div>
+          <div class="card-text d-flex justify-content-between">
+            <h4>Close: </h4>
+            <h4>$@stock.c</h4>
+          </div>
+        </div>
+      </div>
+    }
+  </div>
+
+</div>
